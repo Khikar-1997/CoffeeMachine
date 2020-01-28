@@ -1,28 +1,28 @@
-package com.company.drink;
+package com.company;
 
 import java.util.Objects;
 
-public abstract class Drink {
+public class User {
     //region Propertys
 
     private String name;
-    private int cast;
+    private int money;
 
     //endregion
 
     //region Constructors
 
-    public Drink(String name, int cast) {
+    public User(String name, int money) {
         this.name = name;
-        this.cast = cast;
+        this.money = money;
     }
 
-    public Drink(int cast) {
-        this.cast = cast;
+    public User() {
     }
 
-    public Drink() {
-    }
+    //endregion
+
+    //region Public Methods
 
     //endregion
 
@@ -36,12 +36,12 @@ public abstract class Drink {
         this.name = name;
     }
 
-    public int getCast() {
-        return cast;
+    public int getMoney() {
+        return money;
     }
 
-    public void setCast(int cast) {
-        this.cast = cast;
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     //endregion
@@ -52,21 +52,21 @@ public abstract class Drink {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Drink drink = (Drink) o;
-        return cast == drink.cast &&
-                Objects.equals(name, drink.name);
+        User user = (User) o;
+        return money == user.money &&
+                Objects.equals(name, user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, cast);
+        return Objects.hash(name, money);
     }
 
     @Override
     public String toString() {
-        return "Drink{" +
+        return "User{" +
                 "name='" + name + '\'' +
-                ", cast=" + cast +
+                ", money=" + money +
                 '}';
     }
 

@@ -7,14 +7,17 @@ public class Comand {
 
     private String drinkName;
     private int sugarQuantity;
+    private int stick;
 
     //endregion
 
     //region Constructors
 
-    public Comand(String drinkName, int sugarQuantity) {
+
+    public Comand(String drinkName, int sugarQuantity, int stick) {
         this.drinkName = drinkName;
         this.sugarQuantity = sugarQuantity;
+        this.stick = stick;
     }
 
     public Comand() {
@@ -40,6 +43,13 @@ public class Comand {
         this.sugarQuantity = sugarQuantity;
     }
 
+    public int getStick() {
+        return stick;
+    }
+
+    public void setStick(int stick) {
+        this.stick = stick;
+    }
     //endregion
 
     //region equals,hashCode and toString Public Methods
@@ -50,12 +60,13 @@ public class Comand {
         if (o == null || getClass() != o.getClass()) return false;
         Comand comand = (Comand) o;
         return sugarQuantity == comand.sugarQuantity &&
+                stick == comand.stick &&
                 Objects.equals(drinkName, comand.drinkName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(drinkName, sugarQuantity);
+        return Objects.hash(drinkName, sugarQuantity, stick);
     }
 
     @Override
@@ -63,6 +74,7 @@ public class Comand {
         return "Comand{" +
                 "drinkName='" + drinkName + '\'' +
                 ", sugarQuantity=" + sugarQuantity +
+                ", coffeeStick=" + stick +
                 '}';
     }
 

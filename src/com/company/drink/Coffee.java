@@ -6,26 +6,50 @@ public class Coffee extends Drink {
     //region Propertys
 
     private int sugarQuantity;
+    private int stick;
 
     //endregion
 
     //region Constructors
 
-    public Coffee(String name, int sugarQuantity) {
-        super(name);
-        this.sugarQuantity = sugarQuantity;
+    public Coffee(String name, int cast, int sugarQuantity, int stick) {
+        super(name, cast);
+        if (sugarQuantity >= 0) {
+            this.sugarQuantity = sugarQuantity;
+        } else {
+            throw new RuntimeException("!!!!");
+        }
+        if (stick == 1 || stick == 0){
+            this.stick = stick;
+        } else {
+            throw new RuntimeException("Choose one coffee stick.");
+        }
     }
 
-    public Coffee(int sugarQuantity) {
-        this.sugarQuantity = sugarQuantity;
+    public Coffee(int sugarQuantity, int stick) {
+        if (sugarQuantity >= 0) {
+            this.sugarQuantity = sugarQuantity;
+        } else {
+            throw new RuntimeException("!!!!");
+        }
+        if (stick == 1 || stick == 0) {
+            this.stick = stick;
+        } else {
+            throw new RuntimeException("Choose one coffee stick.");
+        }
+        if (sugarQuantity == 0){
+            this.stick = 0;
+        } else {
+            this.stick = stick;
+        }
+    }
+
+    public Coffee(int cast) {
+        super(cast);
     }
 
     public Coffee() {
     }
-
-    //endregion
-
-    //region Public Methods
 
     //endregion
 
@@ -36,7 +60,23 @@ public class Coffee extends Drink {
     }
 
     public void setSugarQuantity(int sugarQuantity) {
-        this.sugarQuantity = sugarQuantity;
+        if (sugarQuantity >= 0) {
+            this.sugarQuantity = sugarQuantity;
+        } else {
+            throw new RuntimeException("!!!!");
+        }
+    }
+
+    public int getStick() {
+        return stick;
+    }
+
+    public void setStick(int stick) {
+        if (stick == 1 || stick == 0){
+            this.stick = stick;
+        } else {
+            throw new RuntimeException("Choose one coffee stick.");
+        }
     }
 
     //endregion
@@ -49,18 +89,20 @@ public class Coffee extends Drink {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Coffee coffee = (Coffee) o;
-        return sugarQuantity == coffee.sugarQuantity;
+        return sugarQuantity == coffee.sugarQuantity &&
+                stick == coffee.stick;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), sugarQuantity);
+        return Objects.hash(super.hashCode(), sugarQuantity, stick);
     }
 
     @Override
     public String toString() {
         return "Coffee{" +
                 "sugarQuantity=" + sugarQuantity +
+                ", stick=" + stick +
                 '}';
     }
 
